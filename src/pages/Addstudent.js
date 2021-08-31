@@ -34,12 +34,11 @@ class Addstudent extends Component {
                 address:''
             });
         }
-        // else{
-        //     console.log(response);
-        //     this.setState({
-        //         error_list: response.data.validate_err,
-        //     });
-        // }
+        else{
+            this.setState({
+                error_list: response.data.validate_err,
+            });
+        }
     }
     render() {
         return (
@@ -53,6 +52,7 @@ class Addstudent extends Component {
                                 <h1 className="h2">Dashboard</h1>
                                 <div className="btn-toolbar mb-2 mb-md-0">
                                     <div className="btn-group me-2">
+                                        
                                         <Link to={'/students'} className="btn btn-sm btn-outline-secondary">Back</Link>
                                         {/* <button type="button" className="btn btn-sm btn-outline-secondary">Export</button> */}
                                     </div>
@@ -67,12 +67,12 @@ class Addstudent extends Component {
                                 <div className="mb-3">
                                     <label  className="form-label">Name</label>
                                     <input type="text" name="name" className="form-control" onChange={this.hanleInput} value={this.state.name} />
-                                    {/* <span className="text-danger">{this.state.error_list.name}</span> */}
+                                    <span className="text-danger">{this.state.error_list.name}</span>
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Email</label>
                                     <input type="email" name="email" className="form-control"  onChange={this.hanleInput} value={this.state.email} />
-                                    {/* <span className="text-danger">{this.state.error_list.email}</span> */}
+                                    <span className="text-danger">{this.state.error_list.email}</span>
                                 </div>
                                 {/* <div className="mb-3">
                                     <label className="form-label">Image</label>
@@ -81,7 +81,7 @@ class Addstudent extends Component {
                                 <div className="mb-3">
                                     <label className="form-label">Address</label>
                                     <input type="text" name="address" className="form-control"  onChange={this.hanleInput} value={this.state.address} />
-                                    {/* <span className="text-danger">{this.state.error_list.address}</span> */}
+                                    <span className="text-danger">{this.state.error_list.address}</span>
                                 </div>
                                 <button type="submit" className="btn btn-primary">Submit</button>
                             </form>

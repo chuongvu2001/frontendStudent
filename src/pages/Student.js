@@ -32,7 +32,7 @@ class Student extends Component {
                 button:"OK!"
               });
           clicked.closest("tr").remove();
-          console.log(response.data.message);
+        //   console.log(response.data.message);
         }
     }
     render() {
