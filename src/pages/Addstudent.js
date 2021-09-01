@@ -20,7 +20,7 @@ class Addstudent extends Component {
     }
     saveStudent = async (e)=>{
         e.preventDefault();
-        const response = await axios.post('http://localhost:8000/api/add-student',this.state);
+        const response = await axios.post('http://localhost:8000/api/admin/add-student',this.state);
         if(response.data.status === 200){
             swal({
                 title: "Success!",

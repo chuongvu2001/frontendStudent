@@ -20,7 +20,7 @@ class Editstudent extends Component {
     async componentDidMount(){
         const stu_id = this.props.match.params.id;
         // console.log(stu_id);
-        const response = await axios.get(`http://localhost:8000/api/edit-student/${stu_id}`);
+        const response = await axios.get(`http://localhost:8000/api/admin/edit-student/${stu_id}`);
         // console.log(response.data.student.name);
         
         if(response.data.status === 200){
@@ -28,7 +28,7 @@ class Editstudent extends Component {
                 name:response.data.student.name,
                 email:response.data.student.email,
                 address:response.data.student.address,
-            })
+            });
         }
     }
     updateStudent = async (e)=>{
@@ -37,7 +37,7 @@ class Editstudent extends Component {
 
         document.querySelector('#update-btn').innerText = "Updating...";
         const stu_id = this.props.match.params.id;
-        const response = await axios.put(`http://localhost:8000/api/update-student/${stu_id}`,this.state);
+        const response = await axios.put(`http://localhost:8000/api/admin/update-student/${stu_id}`,this.state);
         if(response.data.status === 200){
             // console.log(response.data.message);
             swal({

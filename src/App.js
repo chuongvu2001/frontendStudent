@@ -10,15 +10,17 @@ import Student from './pages/Student';
 import Addstudent from './pages/Addstudent';
 import Editstudent from './pages/Editstudent';
 import Login from './pages/Login.js';
+import Logout from './pages/Logout.js';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/students" component={Student} />
-        <Route  path="/add-student" component={Addstudent} />
-        <Route  path="/edit-student/:id" component={Editstudent} />
-        <Route  path="/login" component={Login} />
+        <Route exact  path="/add-student" component={Addstudent} />
+        <Route exact  path="/edit-student/:id" component={Editstudent} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/logout" component={Logout}/>
       </Switch>
     </Router>
   );
