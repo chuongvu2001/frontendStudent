@@ -63,7 +63,7 @@ class Addstudent extends Component {
                                 </div>
                             </div>
                             <h2>Section title</h2>
-                            <form onSubmit={this.saveStudent}>
+                            <form onSubmit={this.saveStudent} noValidate>
                                 <div className="mb-3">
                                     <label  className="form-label">Name</label>
                                     <input type="text" name="name" className="form-control" onChange={this.hanleInput} value={this.state.name} />

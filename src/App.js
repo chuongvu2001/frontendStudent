@@ -11,6 +11,7 @@ import Addstudent from './pages/Addstudent';
 import Editstudent from './pages/Editstudent';
 import Login from './pages/Login.js';
 import Logout from './pages/Logout.js';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route exact  path="/edit-student/:id" component={Editstudent} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout" component={Logout}/>
+        <Route exact path="/signup" component={Signup}/>
+
       </Switch>
     </Router>
   );

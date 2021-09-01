@@ -15,7 +15,7 @@ class Student extends Component {
     }
     async componentDidMount() {
         const response = await axios.get('http://localhost:8000/api/admin/students');
-        if (sessionStorage.getItem('name') && response.data.status === 200) {
+        if (sessionStorage.getItem('confirmed') == 1 && sessionStorage.getItem('name') && response.data.status === 200) {
             this.setState({
                 students: response.data.students,
                 loading: false
@@ -52,7 +52,7 @@ class Student extends Component {
     submitSearch = async (e)=>{
         e.preventDefault();
         const response = await axios.post('http://localhost:8000/api/admin/search-student',this.state.search);
-        if (sessionStorage.getItem('name') && response.data.status === 200) {
+        if (sessionStorage.getItem('name') && response.data.status === 200 ) {
             this.setState({
                 search_data: response.data.search,
                 loading: false
