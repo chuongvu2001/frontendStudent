@@ -5,9 +5,9 @@ import Sidebar from './component/Sidebar.js';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-class DetailStudent extends Component {
+class DetailClass extends Component {
     state = {
-        classroom: [],
+        students: [],
         loading: true,
         search: '',
         search_data: []
@@ -15,10 +15,10 @@ class DetailStudent extends Component {
     }
     async componentDidMount() {
         const child_id = this.props.match.params.id;
-        const response = await axios.get(`http://localhost:8000/api/admin/detail-student/${child_id}`);
+        const response = await axios.get(`http://localhost:8000/api/admin/detail-class/${child_id}`);
         if (sessionStorage.getItem('confirmed') == 1 && response.data.status === 200) {
             this.setState({
-                classroom: response.data.attribute_class,
+                students: response.data.attribute_student,
                 loading: false
             })
             // console.log(response.data);
@@ -28,6 +28,9 @@ class DetailStudent extends Component {
         }
         
     }
+
+
+
     render(){
         var student_table = "";
         if (this.state.loading) {
@@ -61,14 +64,14 @@ class DetailStudent extends Component {
     
             // }
             // else{
-                student_table = this.state.classroom.map((item) => {
+                student_table = this.state.students.map((item) => {
                     return (
                         <tr key={item.attr_id}>
                             <td>{item.attr_id}</td>
-                            <td>{item.student_name}</td>
-                            <td>{item.student_email}</td>
                             <td>{item.class_name}</td>
                             <td>{item.class_building}</td>
+                            <td>{item.student_name}</td>
+                            <td>{item.student_email}</td>
                             <td>
                                 <a href="javascript:;" onClick={(e)=>this.DeleteStudent(e, item.id)} ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -102,7 +105,7 @@ class DetailStudent extends Component {
                                 </div>
                             </div>
                             <div className="d-flex justify-content-between align-items-center">
-                                <h2>Section title</h2>
+                                <h2>Detail ClassRoom</h2>
                                 <form onSubmit={this.submitSearch}>
                                     <input type="text" value={this.state.search} onChange={this.handleSearch} name="search" placeholder="Tìm kiếm..." />
                                     <input  type="submit" className="mx-1" value="Tìm kiếm"/>
@@ -113,10 +116,10 @@ class DetailStudent extends Component {
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
                                             <th scope="col">ClassRoom</th>
                                             <th scope="col">Building</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -124,7 +127,7 @@ class DetailStudent extends Component {
                                         {student_table}
                                     </tbody>
                                 </table>
-                                <Link to={'/students'}>Back</Link>
+                                <Link to={'/classroom'}>Back</Link>
                             </div>
                         </main>
 
@@ -135,4 +138,4 @@ class DetailStudent extends Component {
     }
 }
 
-export default DetailStudent
+export default DetailClass

@@ -39,7 +39,7 @@ class Login extends Component {
             sessionStorage.setItem('confirmed',response.data.users.confirmed);
             sessionStorage.setItem('name',response.data.users.name);
             // localStorage.setItem('user', response.data.users);
-            // console.log(sessionStorage.getItem('name'));
+            console.log(sessionStorage.getItem('confirmed'));
             // return <Redirect to="/students" />            ;
             this.props.history.push("/students");
         }
